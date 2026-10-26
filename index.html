@@ -15,6 +15,111 @@ h1{font-size:clamp(2rem,6vw,3.5rem);line-height:1.04;letter-spacing:-.04em;margi
 label{display:block;font-size:.88rem;font-weight:700;margin:14px 0 7px}textarea,input[type=text],input[type=url],input[type=password],select{width:100%;background:#0f0f18;color:var(--text);border:1px solid #37374b;border-radius:12px;padding:12px 13px;font:inherit;outline:none}textarea{min-height:132px;resize:vertical}textarea:focus,input:focus,select:focus{border-color:var(--purple)}.hint{font-size:.8rem;color:var(--muted);margin-top:6px}.upload{border:1px dashed #55516f;border-radius:14px;padding:16px;text-align:center;background:#10101a}.upload input{max-width:100%;margin-top:10px}.preview{max-width:100%;max-height:230px;border-radius:12px;margin-top:12px;display:none}
 .btn{width:100%;border:0;border-radius:13px;padding:14px 16px;background:linear-gradient(100deg,#9b7cf7,#67dfee);color:#11111a;font-weight:850;font-size:1rem;margin-top:18px;cursor:pointer}.btn:disabled{opacity:.5;cursor:wait}.status{display:none;margin-top:14px;padding:12px;border-radius:12px;background:#201f30;color:#ddd5ff;font-size:.9rem;white-space:pre-wrap}.result{min-height:300px;border:1px dashed #3b3b50;border-radius:16px;background:linear-gradient(135deg,#171725,#101018);display:grid;place-items:center;padding:16px;text-align:center;overflow:hidden}.result video{width:100%;max-height:420px;border-radius:12px;background:#000}.placeholder{color:var(--muted);max-width:260px}.placeholder .big{font-size:3rem;margin-bottom:8px}.download{display:none;color:var(--cyan);font-weight:700;margin-top:12px}.note{margin-top:18px;color:var(--muted);font-size:.82rem}.settings{margin-top:18px}.settings summary{cursor:pointer;color:#d4ccff;font-weight:700}.settings-body{padding-top:10px}.warning{border-left:3px solid #fbbf24;padding:10px 12px;background:#241f15;color:#f5deb0;border-radius:8px;font-size:.83rem;margin-top:15px}.footer{margin-top:28px;color:#77778e;font-size:.8rem;text-align:center}a{color:#9debf4}
 @media(max-width:760px){.layout{grid-template-columns:1fr}.wrap{padding:18px 12px 40px}.card{padding:16px}.top{margin-bottom:20px}.result{min-height:230px}}
+
+
+/* Mejoras visuales de VideoIA Gratis */
+body {
+  background:
+    radial-gradient(ellipse at 50% 0%, #30245b 0%, transparent 48%),
+    #0b0b12;
+}
+
+.card {
+  border-color: #39334f;
+  box-shadow: 0 18px 50px #0004;
+  transition: border-color .2s, transform .2s;
+}
+
+.card:hover {
+  border-color: #65539a;
+}
+
+h1 {
+  line-height: 1.08;
+}
+
+.sub {
+  line-height: 1.8;
+}
+
+textarea,
+input[type=text],
+input[type=url],
+input[type=password],
+select {
+  border-color: #403b55;
+  transition: border-color .2s, box-shadow .2s;
+}
+
+textarea:focus,
+input:focus,
+select:focus {
+  border-color: #a78bfa;
+  box-shadow: 0 0 0 3px #a78bfa25;
+}
+
+.tab,
+.btn {
+  transition: transform .15s, filter .15s;
+}
+
+.tab:hover,
+.btn:hover {
+  filter: brightness(1.12);
+}
+
+.btn {
+  box-shadow: 0 6px 22px #a78bfa20;
+}
+
+.upload {
+  border-color: #716391;
+  line-height: 1.8;
+}
+
+.result {
+  border-color: #51476f;
+}
+
+.download {
+  display: none;
+  padding: 12px 16px;
+  border: 1px solid #51476f;
+  border-radius: 12px;
+}
+
+.footer {
+  line-height: 1.8;
+}
+
+@media (max-width: 480px) {
+  .wrap {
+    padding: 16px 10px 32px;
+  }
+
+  .top {
+    align-items: flex-start;
+    flex-wrap: wrap;
+  }
+
+  .pill {
+    font-size: .7rem;
+  }
+
+  h1 {
+    font-size: 2.35rem;
+  }
+
+  .card {
+    border-radius: 18px;
+    padding: 15px;
+  }
+
+  .btn {
+    min-height: 50px;
+  }
+}
+ 
 </style>
 </head>
 <body>
