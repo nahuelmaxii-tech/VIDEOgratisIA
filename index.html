@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#11111a">
+<title>VideoIA Gratis</title>
+<style>
+:root{--bg:#0b0b12;--panel:#151520;--panel2:#1c1c2b;--text:#f7f7fb;--muted:#aaaabd;--purple:#a78bfa;--cyan:#67e8f9;--line:#2d2d40}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 15% 0%,#272044 0,transparent 38%),var(--bg);color:var(--text);font:16px/1.5 system-ui,-apple-system,Segoe UI,Roboto,sans-serif}
+.wrap{max-width:980px;margin:auto;padding:24px 16px 56px}.top{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:26px}.brand{display:flex;gap:11px;align-items:center;font-weight:800;font-size:1.15rem}.logo{width:42px;height:42px;border-radius:14px;background:linear-gradient(135deg,var(--purple),var(--cyan));display:grid;place-items:center;color:#12121a;font-size:22px}
+.pill{border:1px solid #3c3659;color:#d9d0ff;background:#211d35;border-radius:99px;padding:6px 10px;font-size:.78rem}
+h1{font-size:clamp(2rem,6vw,3.5rem);line-height:1.04;letter-spacing:-.04em;margin:10px 0 14px}h1 span{background:linear-gradient(90deg,var(--purple),var(--cyan));background-clip:text;color:transparent}.sub{color:var(--muted);max-width:650px;margin:0 0 24px}
+.layout{display:grid;grid-template-columns:1.05fr .95fr;gap:16px}.card{background:rgba(21,21,32,.94);border:1px solid var(--line);border-radius:22px;padding:20px;box-shadow:0 16px 45px #0002}.card h2{font-size:1.05rem;margin:0 0 15px}.tabs{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:18px}.tab{border:1px solid var(--line);background:var(--panel2);color:var(--muted);padding:12px;border-radius:12px;font-weight:700;cursor:pointer}.tab.active{background:#30264d;border-color:#8b5cf6;color:#fff}
+label{display:block;font-size:.88rem;font-weight:700;margin:14px 0 7px}textarea,input[type=text],input[type=url],input[type=password],select{width:100%;background:#0f0f18;color:var(--text);border:1px solid #37374b;border-radius:12px;padding:12px 13px;font:inherit;outline:none}textarea{min-height:132px;resize:vertical}textarea:focus,input:focus,select:focus{border-color:var(--purple)}.hint{font-size:.8rem;color:var(--muted);margin-top:6px}.upload{border:1px dashed #55516f;border-radius:14px;padding:16px;text-align:center;background:#10101a}.upload input{max-width:100%;margin-top:10px}.preview{max-width:100%;max-height:230px;border-radius:12px;margin-top:12px;display:none}
+.btn{width:100%;border:0;border-radius:13px;padding:14px 16px;background:linear-gradient(100deg,#9b7cf7,#67dfee);color:#11111a;font-weight:850;font-size:1rem;margin-top:18px;cursor:pointer}.btn:disabled{opacity:.5;cursor:wait}.status{display:none;margin-top:14px;padding:12px;border-radius:12px;background:#201f30;color:#ddd5ff;font-size:.9rem;white-space:pre-wrap}.result{min-height:300px;border:1px dashed #3b3b50;border-radius:16px;background:linear-gradient(135deg,#171725,#101018);display:grid;place-items:center;padding:16px;text-align:center;overflow:hidden}.result video{width:100%;max-height:420px;border-radius:12px;background:#000}.placeholder{color:var(--muted);max-width:260px}.placeholder .big{font-size:3rem;margin-bottom:8px}.download{display:none;color:var(--cyan);font-weight:700;margin-top:12px}.note{margin-top:18px;color:var(--muted);font-size:.82rem}.settings{margin-top:18px}.settings summary{cursor:pointer;color:#d4ccff;font-weight:700}.settings-body{padding-top:10px}.warning{border-left:3px solid #fbbf24;padding:10px 12px;background:#241f15;color:#f5deb0;border-radius:8px;font-size:.83rem;margin-top:15px}.footer{margin-top:28px;color:#77778e;font-size:.8rem;text-align:center}a{color:#9debf4}
+@media(max-width:760px){.layout{grid-template-columns:1fr}.wrap{padding:18px 12px 40px}.card{padding:16px}.top{margin-bottom:20px}.result{min-height:230px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="top"><div class="brand"><div class="logo">▶</div><div>VideoIA <span style="color:var(--cyan)">Gratis</span></div></div><span class="pill">CREADOR DE VIDEOS IA</span></header>
+<h1>De una idea a un <span>video.</span></h1>
+<p class="sub">Escribí una escena o subí una imagen para animarla. Esta web se conecta con un Space público de Hugging Face: sin suscripción propia, pero sujeto a colas y límites del servicio.</p>
+<div class="layout">
+<section class="card">
+<h2>✨ Crear video</h2>
+<div class="tabs"><button class="tab active" id="textTab">✍️ Texto a video</button><button class="tab" id="imageTab">🖼️ Imagen a video</button></div>
+<label for="prompt">Describí tu video</label>
+<textarea id="prompt" maxlength="1200" placeholder="Ej.: Un pequeño robot de juguete salta entre bloques de colores, cámara dinámica, luz cinematográfica, movimiento fluido..."></textarea>
+<div class="hint">Consejo: describí el personaje, qué hace, el entorno y el estilo visual.</div>
+<div id="imageArea" style="display:none">
+<label for="imageFile">Imagen inicial</label>
+<div class="upload">Elegí una imagen JPG, PNG o WEBP<br><input id="imageFile" type="file" accept="image/png,image/jpeg,image/webp"><img id="imagePreview" class="preview" alt="Vista previa de la imagen"></div>
+<div class="hint">Usá imágenes propias o que tengas permiso para usar.</div>
+</div>
+<button class="btn" id="generateBtn">Generar video</button>
+<div class="status" id="status"></div>
+<details class="settings">
+<summary>⚙️ Configurar motor gratuito</summary>
+<div class="settings-body">
+<p class="hint">Necesitás un Space público de Gradio compatible. Los nombres de los controles cambian según el Space; revisá su pestaña “Use via API”. La configuración se guarda solo en este navegador.</p>
+<label for="space">Space de Hugging Face (usuario/nombre)</label><input id="space" type="text" placeholder="ej.: usuario/mi-space">
+<label for="textApi">Nombre API para texto a video</label><input id="textApi" type="text" placeholder="/text_to_video">
+<label for="imageApi">Nombre API para imagen a video</label><input id="imageApi" type="text" placeholder="/image_to_video">
+<label for="order">Orden de argumentos en imagen a video</label><select id="order"><option value="image-prompt">Imagen, luego texto</option><option value="prompt-image">Texto, luego imagen</option></select>
+<button class="btn" id="saveSettings" type="button" style="margin-top:12px">Guardar configuración</button>
+</div>
+</details>
+<div class="warning">La app no cobra ni incluye una API paga. Los motores públicos gratuitos pueden estar saturados, cambiar sus parámetros o dejar de funcionar. No subas fotos privadas o sensibles.</div>
+</section>
+<section class="card">
+<h2>🎬 Tu resultado</h2>
+<div class="result" id="result"><div class="placeholder"><div class="big">✦</div><strong>Tu próximo video aparece acá</strong><p>Escribí una idea y tocá “Generar video”. Puede tardar unos minutos.</p></div></div>
+<a class="download" id="download" download="videoia-creacion.mp4">⬇ Descargar video</a>
+<div class="note">Tip: para Reels, Shorts y TikTok, escribí en el prompt que querés encuadre vertical 9:16, si el modelo lo admite.</div>
+</section>
+</div>
+<div class="footer">VideoIA Gratis · Proyecto personal de código abierto · Sin garantías de disponibilidad del motor externo</div>
+</div>
+<script type="module">
+import { Client, handle_file } from "https://cdn.jsdelivr.net/npm/@gradio/client/+esm";
+const $ = id => document.getElementById(id);
+let mode = "text", selectedFile = null;
+const defaults = {space:"",textApi:"/text_to_video",imageApi:"/image_to_video",order:"image-prompt"};
+function loadSettings(){try{return {...defaults,...JSON.parse(localStorage.getItem("videoia-settings")||"{}")}}catch{return defaults}}
+function applySettings(s){$("space").value=s.space;$("textApi").value=s.textApi;$("imageApi").value=s.imageApi;$("order").value=s.order}
+applySettings(loadSettings());
+function setMode(next){mode=next;$("textTab").classList.toggle("active",mode==="text");$("imageTab").classList.toggle("active",mode==="image");$("imageArea").style.display=mode==="image"?"block":"none";$("generateBtn").textContent=mode==="text"?"Generar video":"Animar imagen"}
+$("textTab").onclick=()=>setMode("text");$("imageTab").onclick=()=>setMode("image");
+$("imageFile").addEventListener("change",e=>{selectedFile=e.target.files?.[0]||null;const p=$("imagePreview");if(selectedFile){p.src=URL.createObjectURL(selectedFile);p.style.display="inline-block"}else p.style.display="none"});
+$("saveSettings").onclick=()=>{const s={space:$("space").value.trim(),textApi:$("textApi").value.trim()||defaults.textApi,imageApi:$("imageApi").value.trim()||defaults.imageApi,order:$("order").value};localStorage.setItem("videoia-settings",JSON.stringify(s));$("status").style.display="block";$("status").textContent="Configuración guardada en este navegador."};
+function status(t){$("status").style.display="block";$("status").textContent=t}
+function extractVideo(data){if(typeof data==="string" && /\.(mp4|webm|mov)(\?|$)/i.test(data))return data;if(Array.isArray(data)){for(const x of data){const v=extractVideo(x);if(v)return v}}if(data&&typeof data==="object"){if(data.url&&typeof data.url==="string")return data.url;if(data.video&&typeof data.video==="string")return data.video;if(data.path&&typeof data.path==="string")return data.path;for(const v of Object.values(data)){const found=extractVideo(v);if(found)return found}}return null}
+$("generateBtn").onclick=async()=>{
+ const prompt=$("prompt").value.trim(), s=loadSettings();
+ if(!prompt){status("Escribí una descripción para el video.");return}
+ if(!s.space){status("Primero configurá un Space público de Gradio en “Configurar motor gratuito”. Abrí ese Space en Hugging Face y buscá “Use via API” para confirmar el nombre de la función y los argumentos.");return}
+ if(mode==="image"&&!selectedFile){status("Elegí una imagen para animar.");return}
+ $("generateBtn").disabled=true;$("download").style.display="none";$("result").innerHTML='<div class="placeholder"><div class="big">⏳</div><strong>Generando...</strong><p>El motor gratuito puede tener cola. No cierres esta pestaña.</p></div>';
+ status("Conectando con el motor…");
+ try{
+   const client=await Client.connect(s.space);
+   const api=mode==="text"?s.textApi:s.imageApi;
+   let args;
+   if(mode==="text") args=[prompt];
+   else {const file=await handle_file(selectedFile);args=s.order==="image-prompt"?[file,prompt]:[prompt,file]}
+   status("Solicitud enviada. Esperando al motor público; puede tardar varios minutos…");
+   const result=await client.predict(api,args);
+   const url=extractVideo(result.data);
+   if(!url){$("result").innerHTML='<div class="placeholder"><strong>El motor respondió, pero no pude reconocer el video automáticamente.</strong><p>Revisá la configuración de API de ese Space y el formato de su respuesta.</p></div>';status("Respuesta recibida sin una URL de video reconocible.");return}
+   $("result").innerHTML="";
+   const video=document.createElement("video");video.controls=true;video.playsInline=true;video.src=url;$("result").appendChild(video);
+   $("download").href=url;$("download").style.display="inline-block";status("¡Listo! Tu video se generó. Si no se reproduce, abrí el enlace del resultado en una pestaña nueva.");
+ }catch(err){console.error(err);$("result").innerHTML='<div class="placeholder"><div class="big">⚠️</div><strong>No se pudo generar el video</strong><p>El Space puede estar ocupado, pausado o tener otra API. Revisá el nombre exacto de la función en “Use via API”.</p></div>';status("Error: "+(err?.message||String(err))+"\nProbá más tarde o elegí otro Space compatible.")}
+ finally{$("generateBtn").disabled=false}
+};
+</script>
+</body>
+</html>
